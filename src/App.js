@@ -1,59 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Panel } from 'react-bootstrap';
+
+import { Header, Footer } from './components/index';
+import Router from './components/Router';
 
 class App extends Component {
-     constructor(props) {
-      super(props);
-      
-      this.state = {
-         data: 0
-      }
-      this.setNewNumber = this.setNewNumber.bind(this)
-   };
-   setNewNumber() {
-      this.setState({data: this.state.data + 1})
-   }
-    
   render() {
+    const dynamicProps = { name: 'content should be displayed here', number: 1, isFlag: false };
     return (
-      <div className="App">
-         <button onClick = {this.setNewNumber}>INCREMENT</button>
-            <Content myNumber = {this.state.data}></Content>
-      </div>
+      <BrowserRouter>
+        <Panel>
+          <Header />
+          <Router />
+          <Footer />
+        </Panel>
+      </BrowserRouter>
     );
   }
-}
-
-class Content extends Component {
-   componentWillMount() {
-      console.log('Component WILL MOUNT!')
-   }
-   componentDidMount() {
-      console.log('Component DID MOUNT!')
-   }
-   componentWillReceiveProps(newProps) {    
-      console.log('Component WILL RECIEVE PROPS!'+ newProps)
-   }
-   shouldComponentUpdate(newProps, newState) {
-      return true;
-   }
-   componentWillUpdate(nextProps, nextState) {
-      console.log(`Component WILL UPDATE!${nextProps}${nextState}`);
-   }
-   componentDidUpdate(prevProps, prevState) {
-      console.log('Component DID UPDATE!')
-   }
-   componentWillUnmount() {
-      console.log('Component WILL UNMOUNT!')
-   }
-   render() {
-      return (
-         <div>
-            <h3>{this.props.myNumber}</h3>
-         </div>
-      );
-   }
 }
 
 export default App;
