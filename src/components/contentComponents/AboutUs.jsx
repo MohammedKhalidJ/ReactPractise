@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel } from 'react-bootstrap';
 
-const Content = (props) => {
+const AboutUs = (props) => {
     console.log(props);
     return (
         <React.Fragment>
@@ -16,13 +16,13 @@ const Content = (props) => {
     );
 }
 
-Content.propTypes = {
+AboutUs.propTypes = {
     name: PropTypes.string,
     list: PropTypes.array
 };
 
-Content.defaultProps = {
+AboutUs.defaultProps = {
     list: [1,2,3]
 };
 
-export default Content;
+export default AboutUs;

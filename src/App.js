@@ -8,7 +8,6 @@ import Router from './components/Router';
 
 class App extends Component {
   render() {
-    const dynamicProps = { name: 'content should be displayed here', number: 1, isFlag: false };
     return (
       <BrowserRouter>
         <Panel>
