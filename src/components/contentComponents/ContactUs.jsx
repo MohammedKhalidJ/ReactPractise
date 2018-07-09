@@ -1,60 +1,63 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
-import ajax from '../../api/api';
+import {
+    Form,
+    Col,
+    FormGroup,
+    ControlLabel,
+    FormControl,
+    Button,
+} from 'react-bootstrap';
 
 class ContactUs extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: 'user1',
-            password: 'user1'
-        }
-    }
-    componentDidMount() {
-        ajax('https://jsonplaceholder.typicode.com/posts').then(res => console.log(res));
-    }
+    render() {
+        return (
+            <React.Fragment>
+                <Form horizontal>
+                    <FormGroup controlId="formHorizontalName">
+                        <Col componentClass={ControlLabel} sm={4}>
+                            Name
+                        </Col>
+                        <Col sm={5}>
+                            <FormControl type="text" placeholder="Name" />
+                            <FormControl.Feedback />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="formHorizontalEmail">
+                        <Col componentClass={ControlLabel} sm={4}>
+                            Email
+                        </Col>
+                        <Col sm={5}>
+                            <FormControl type="email" placeholder="Email" />
+                        </Col>
+                    </FormGroup>
 
-    submitForm = (e) => {
-        e.preventDefault();
-        console.log(this.state);
+                    <FormGroup controlId="formHorizontalResume">
+                        <Col componentClass={ControlLabel} sm={4}>
+                            Contact Number
+                        </Col>
+                        <Col sm={5}>
+                            <FormControl type="number" />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup controlId="formHorizontalPassword">
+                        <Col componentClass={ControlLabel} sm={4}>
+                            Attach Resume
+                        </Col>
+                        <Col sm={5}>
+                            <FormControl type="file" />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Col smOffset={8} sm={2}>
+                            <Button type="submit">Submit</Button>
+                        </Col>
+                    </FormGroup>
+                </Form>;
+            </React.Fragment>
+        );
     }
-    changeUserName = (e) => {
-        this.setState({
-            username: e.target.value
-        })
-    }
-    changePassword = (e) => {
-        this.setState({
-            password: e.target.value
-        })
-    }
-    clearInput = () => {
-        this.setState({
-            username: '',
-            password: ''
-        });
-        ReactDOM.findDOMNode(this.refs.userNameInput).focus();
-    }
-render() {
-    return (
-        <React.Fragment>
-           <h1>Home</h1>
-                <form onSubmit={this.submitForm}>
-                    <div>
-                        <label>Username</label>
-                        <input type='text' name='username' ref="userNameInput" onChange={this.changeUserName} value={this.state.username} />
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <input type='password' name='password' ref="passwordInput" onChange={this.changePassword} value={this.state.password} />
-                    </div>
-                    <input type='submit' value='submit' />
-                    <input type='button' value='clear' onClick={this.clearInput} />
-                </form>
-        </React.Fragment>
-    );
-}
 }
 
 export default ContactUs;
