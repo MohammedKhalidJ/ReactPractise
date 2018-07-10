@@ -15,15 +15,18 @@ class Header extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1} href="/">
-            Home
-              </NavItem>
+          <NavItem eventKey={1}>
+            <Link to="/">Home</Link>
+          </NavItem>
           <NavItem eventKey={2} href="/aboutUs">
             About Us
             </NavItem>
-            <NavItem eventKey={2} href="/contactUs">
+          <NavItem eventKey={3} href="/contactUs">
             Contact Us
             </NavItem>
+          <NavItem eventKey={4}>
+            <Link to="adminTab">admin</Link>
+          </NavItem>
         </Nav>
       </Navbar>
     );
