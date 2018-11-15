@@ -25,7 +25,7 @@ class Header extends Component {
             Contact Us
             </NavItem>
           <NavItem eventKey={4}>
-            <Link to="adminTab">admin</Link>
+            <Link to="/adminTab">admin</Link>
           </NavItem>
         </Nav>
       </Navbar>
