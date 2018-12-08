@@ -1,30 +1,27 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Panel } from "react-bootstrap";
+import { connect } from "react-redux";
 
-const AboutUs = props => {
-  console.log(props);
-  return (
-    <React.Fragment>
-      <Panel.Body>
-        {props.name || null}
-        <ul>
-          {props.list.map((v, i) => (
-            <li key={i.toString()}>{v}</li>
-          ))}
-        </ul>
-      </Panel.Body>
-    </React.Fragment>
-  );
+class AboutUs extends React.Component {
+  render() {
+    if (!this.props.companyInfo.companyInformation) {
+      return null;
+    }
+    return (
+      <React.Fragment>
+        <h1>About Us</h1>
+        <h2>{this.props.companyInfo.companyInformation.aboutustext}</h2>
+      </React.Fragment>
+    );
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    companyInfo: state
+  };
 };
 
-AboutUs.propTypes = {
-  name: PropTypes.string,
-  list: PropTypes.array
-};
-
-AboutUs.defaultProps = {
-  list: [1, 2, 3]
-};
-
-export default AboutUs;
+export default connect(
+  mapStateToProps,
+  null
+)(AboutUs);
